@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace GatoGraphQL\TestingSchema\Overrides\Log;
 
-use GatoGraphQL\GatoGraphQL\Log\Logger as UpstreamLogger;
+use GatoGraphQL\GatoGraphQL\Log\SystemLogger as UpstreamSystemLogger;
 
-class Logger extends UpstreamLogger
+class SystemLogger extends UpstreamSystemLogger
 {
     use LoggerTrait;
 
@@ -14,9 +14,9 @@ class Logger extends UpstreamLogger
      * Send the error to the response headers,
      * so we can test it
      */
-    protected function logMessage(string $severity, string $message): void
+    public function log(string $message): void
     {
-        parent::logMessage($severity, $message);
+        parent::log($message);
 
         $this->sendCustomHeader($message);
     }
