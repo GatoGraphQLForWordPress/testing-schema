@@ -3,7 +3,7 @@
 Plugin Name: Gato GraphQL - Testing Schema
 Plugin URI: https://github.com/GatoGraphQL/GatoGraphQL
 Description: Addition of elements to the GraphQL schema to test the Gato GraphQL plugin
-Version: 19.0.0
+Version: 19.1.0-dev
 Requires at least: 6.1
 Requires PHP: 8.1
 Author: Gato GraphQL
@@ -21,13 +21,6 @@ use GatoGraphQL\GatoGraphQL\PluginApp;
 if (!defined('ABSPATH')) {
     exit;
 }
-
-add_action('init', function (): void {
-    if (!class_exists(\PoPIncludes\GatoGraphQL\Startup::class)) {
-        return;
-    }
-    \PoPIncludes\GatoGraphQL\Startup::loadTextdomainWithFallback(__DIR__ . '/languages/', basename(__FILE__, '.php') . '-');
-}, PHP_INT_MIN);
 
 /**
  * Create and set-up the extension
@@ -50,7 +43,7 @@ add_action(
          *
          * @gatographql-readonly-code
          */
-        $extensionVersion = '19.0.0';
+        $extensionVersion = '19.1.0-dev';
         $extensionName = \__('Gato GraphQL - Testing Schema');
         /**
          * Important: Do not modify the formatting of this PHP code!
@@ -61,7 +54,7 @@ add_action(
          *
          * @gatographql-readonly-code
          */
-        $mainPluginVersionConstraint = '^19.0';
+        $mainPluginVersionConstraint = '^19.1';
         
         /**
          * Validate Gato GraphQL is active
@@ -90,6 +83,10 @@ add_action(
         )) {
             return;
         }
+
+        add_action('init', function (): void {
+            \PoPIncludes\GatoGraphQL\Startup::loadTextdomainWithFallback(__DIR__ . '/languages/', basename(__FILE__, '.php') . '-');
+        }, PHP_INT_MIN);
 
         /**
          * The commit hash is added to the plugin version 
