@@ -3,8 +3,8 @@
 Plugin Name: Gato GraphQL - Testing Schema
 Plugin URI: https://github.com/GatoGraphQL/GatoGraphQL
 Description: Addition of elements to the GraphQL schema to test the Gato GraphQL plugin
-Version: 20.0.0-dev
-Requires at least: 6.1
+Version: 19.3.0-dev
+Requires at least: 6.5
 Requires PHP: 8.1
 Author: Gato GraphQL
 License: GPLv2 or later
@@ -43,7 +43,7 @@ add_action(
          *
          * @gatographql-readonly-code
          */
-        $extensionVersion = '20.0.0-dev';
+        $extensionVersion = '19.3.0-dev';
         $extensionName = \__('Gato GraphQL - Testing Schema');
         /**
          * Important: Do not modify the formatting of this PHP code!
@@ -54,7 +54,7 @@ add_action(
          *
          * @gatographql-readonly-code
          */
-        $mainPluginVersionConstraint = '^20.0';
+        $mainPluginVersionConstraint = '^19.3';
         
         /**
          * Validate Gato GraphQL is active
